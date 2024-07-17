@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Comment</title>
+    <!-- Include your CSS stylesheets -->
+    <link href="{% static 'style.css' %}" rel="stylesheet">
+    <link href="{% static 'css/responsive/responsive.css' %}" rel="stylesheet">
+</head>
+<body>
+    <!-- Header and Navigation -->
+    <!-- Include your header, navigation, or any common elements -->
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row justify-content-center mt-5">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">Edit Comment</div>
+
+                    <div class="card-body">
+                        <form method="POST" action="{% url 'comment_edit' comment.id %}">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control" id="message" name="message" rows="4">{{ comment.body }}</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Comment</button>
+                            <a href="{% url 'blog_detail' blog.id %}" class="btn btn-secondary ml-2">Cancel</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <!-- Include your footer section -->
+
+    <!-- JavaScript files -->
+    <script src="{% static 'js/jquery/jquery-2.2.4.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/popper.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/others/plugins.js' %}"></script>
+    <script src="{% static 'js/active.js' %}"></script>
+</body>
+</html>
